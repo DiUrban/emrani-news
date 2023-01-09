@@ -16,7 +16,7 @@ type Article = {
   category: string | null;
   country: string | null;
   description: string | null;
-  image: string | null;
+  image: string;
   langauge: string | null;
   published_at: string;
   source: string | null;
