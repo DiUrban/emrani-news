@@ -5,12 +5,7 @@ import LiveTimestamp from "../../LiveTimestamp";
 type Props = { searchParams?: Article };
 
 function ArticlePage({ searchParams }: Props) {
-  if (
-    (searchParams && Object.entries(searchParams).length === 0) ||
-    !searchParams
-  ) {
-    return notFound();
-  }
+  //@ts-ignore
   const article: Article = searchParams;
   return (
     <article>
