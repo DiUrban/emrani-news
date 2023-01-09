@@ -4,7 +4,6 @@ import NewsList from "./NewsList";
 type Props = {};
 
 async function page({}: Props) {
-  //@ts-ignore
   const news: NewsResponse = await fetchNews(categories.join(","));
   return (
     <div>
