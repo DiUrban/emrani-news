@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import LiveTimestamp from "../../LiveTimestamp";
@@ -5,13 +6,13 @@ import LiveTimestamp from "../../LiveTimestamp";
 type Props = { searchParams?: Article };
 
 function ArticlePage({ searchParams }: Props) {
-  if (
-    (searchParams && Object.entries(searchParams).length === 0) ||
-    !searchParams
-  ) {
+  if (!searchParams) {
+    console.log(searchParams);
     return notFound();
   }
   const article: Article = searchParams;
+  console.log(article);
+
   return (
     <article>
       <section className="flex flex-col lg:flex-row pb-24 px-0 lg:px-10 text-primary-1000 dark:text-primary-200">
