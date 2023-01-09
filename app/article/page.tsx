@@ -1,22 +1,39 @@
 "use client";
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, useSearchParams } from "next/navigation";
 import LiveTimestamp from "../../LiveTimestamp";
 
-type Props = { searchParams?: Article };
+type Props = {};
 
-function ArticlePage({ searchParams }: Props) {
-  if (!searchParams) {
-    console.log(searchParams);
+function ArticlePage({}: Props) {
+  const searchParams = useSearchParams();
+  if (
+    !searchParams ||
+    searchParams.get("title") === "null" ||
+    searchParams.get("url") === "null"
+  ) {
     return notFound();
   }
-  const article: Article = searchParams;
+  const article: Article = {
+    category: searchParams.get("category"),
+    country: searchParams.get("country"),
+    //@ts-ignore
+    url: searchParams.get("url"),
+    image: searchParams.get("image"),
+    //@ts-ignore
+    title: searchParams.get("title"),
+    author: searchParams.get("author"),
+    source: searchParams.get("source"),
+    //@ts-ignore
+
+    published_at: searchParams.get("published_at"),
+    description: searchParams.get("description"),
+  };
   console.log(article);
 
   return (
     <article>
       <section className="flex flex-col lg:flex-row pb-24 px-0 lg:px-10 text-primary-1000 dark:text-primary-200">
-        <Link href={article.url}>
+        <a href={article.url}>
           {article.image && (
             <img
               src={article.image}
@@ -27,7 +44,7 @@ function ArticlePage({ searchParams }: Props) {
           <button className="max-w-6xl w-full bg-primary-1000 dark:bg-primary-200 rounded-b-lg mx-auto my-0 text-primary-200 dark:text-primary-1000 cursor-pointer">
             Read Full Article
           </button>
-        </Link>
+        </a>
         <div className="px-10">
           <h1 className="headerTitle px-0 no-underline pb-2 ">
             {article.title}

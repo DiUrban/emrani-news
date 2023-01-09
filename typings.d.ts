@@ -13,13 +13,13 @@ type NewsResponse = {
 };
 type Article = {
   author: string | null;
-  category: string;
-  country: string;
-  description: string;
+  category: string | null;
+  country: string | null;
+  description: string | null;
   image: string | null;
-  langauge: string;
+  langauge: string | null;
   published_at: string;
-  source: string;
+  source: string | null;
   title: string;
   url: string;
 };
