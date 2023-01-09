@@ -9,9 +9,7 @@ function Article({ article }: Props) {
   return (
     <article className="bg-primary-400 dark:bg-primary-900 flex flex-col rounded-lg shadow-sm hover:scale-105 hover:shadow-lg hover:bg-primary-200 transition-all duration-200 ease-out hover:dark:bg-primary-800">
       {article.image && (
-        <Image
-          width={3000}
-          height={3000}
+        <img
           src={article.image}
           alt={article.title}
           className="h-56 w-full object-cover rounded-t-lg shadow-md"
